@@ -1,0 +1,65 @@
+*{
+    border-radius: 10px;
+}
+body{
+    background-image: url(../img/bg-intro-desktop.png) ;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    background-color: rgba(255, 16, 88, 0.671);
+}
+body{
+    display: flex;
+    margin: 5%;
+    align-items: center;
+    text-align: center;
+}
+.sideText{
+    width: 50%;
+    margin: 20px;
+    text-align: left;
+    color: aliceblue;
+}
+
+.data-request{
+    margin: 20px;
+    width: 50%;
+}
+.anuncio {
+    background-color: blueviolet;
+    color: aliceblue;
+    height: 30px;
+    padding: 2px;
+    text-align: center;
+}
+.data-form {
+
+    background-color: aliceblue;
+    align-items: center;
+    padding: 10px;
+}
+.data-form input {
+    width: 90%;
+    margin: 5px;
+    height: 30px;
+    border: 2px grey solid;
+}
+.btn {
+    width: 90%;
+    height: 40px;
+    color: aliceblue;
+    background-color: green;
+    transition-duration: 0.25s;
+}
+.btn:hover {
+    transform: scale(1.1);
+}
+.terminos{
+    color:grey;
+    font-size: 10px;
+}
+.terminos a {
+    text-decoration: none;
+}
+.terminos strong {
+    color: brown;;
+}
