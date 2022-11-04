@@ -5,10 +5,8 @@ body{
     background-image: url(../img/bg-intro-desktop.png) ;
     font-family: 'Poppins', sans-serif;
     border-radius: 5px;
-    background-color: rgba(255, 16, 88, 0.671);
-}
-body{
-    display: flex;
+    background-color: rgba(255, 16, 88, 0.65);
+    display: inline-flex;
     margin: 5%;
     align-items: center;
     text-align: center;
@@ -27,15 +25,13 @@ body{
 .anuncio {
     background-color: blueviolet;
     color: aliceblue;
-    height: 30px;
-    padding: 2px;
+    padding: 2% 0px 2% 0px;
     text-align: center;
 }
 .data-form {
-
     background-color: aliceblue;
     align-items: center;
-    padding: 10px;
+    padding: 20px 0px 20px 0px;
 }
 .data-form input {
     width: 90%;
@@ -46,6 +42,7 @@ body{
 .btn {
     width: 90%;
     height: 40px;
+    margin-top: 10px;
     color: aliceblue;
     background-color: green;
     transition-duration: 0.25s;
@@ -62,4 +59,22 @@ body{
 }
 .terminos strong {
     color: brown;;
+}
+@media screen and (max-width: 700px) {
+    body{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+    }
+    .sideText{
+        flex-direction: column;
+        width: 100%;
+        margin: 20px;
+    }
+    .data-request{
+        width: 100%;
+        margin: 20px;
+        
+    }
+    
 }
