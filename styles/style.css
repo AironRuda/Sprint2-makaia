@@ -37,7 +37,20 @@ body{
     width: 90%;
     margin: 5px;
     height: 30px;
-    border: 2px grey solid;
+}
+.badInput {
+    border: 4px red solid;
+}
+.alert {
+    color: red;
+    display: flex;
+    justify-content: flex-end;
+}
+.alert p {
+    margin: 0px 5% 0px 5px;
+}
+.hiden {
+    display: none;
 }
 .btn {
     width: 90%;
