@@ -6,7 +6,10 @@ body{
     font-family: 'Poppins', sans-serif;
     border-radius: 5px;
     background-color: rgba(255, 16, 88, 0.65);
-    display: inline-flex;
+}
+
+.content{
+    display: flex;
     margin: 5%;
     align-items: center;
     text-align: center;
@@ -73,8 +76,23 @@ body{
 .terminos strong {
     color: brown;;
 }
+.infoStored{
+    background-color: tomato;
+    margin: 20px;
+    text-align: center;
+    padding: 2%;
+    margin: 20px 15%;
+}
+.user{
+    background-color: antiquewhite;
+    margin: 2%;
+    width: auto;
+}
+.user p{
+    margin: 2px
+}
 @media screen and (max-width: 700px) {
-    body{
+    .content{
         display: flex;
         flex-direction: column;
         width: 100vw;
@@ -87,7 +105,6 @@ body{
     .data-request{
         width: 100%;
         margin: 20px;
-        
     }
-    
 }
+

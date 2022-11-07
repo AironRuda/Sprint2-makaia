@@ -1,9 +1,5 @@
 const myForm = document.querySelector(".data-form");
 
-let clearForm = () => {
-  document.querySelector(".data-form").reset();
-};
-
 let dataConfirmed = (data, alert) => {
   if (data.value) {
     alert.classList.add("hiden");
@@ -15,9 +11,26 @@ let dataConfirmed = (data, alert) => {
     return false;
   }
 };
+const createText = (_text) => {
+  let _p = document.createElement("p");
+  let _textNode = document.createTextNode(_text);
+  _p.appendChild(_textNode);
+  return _p;
+};
+const createTitle = (title) => {
+  let strong = document.createElement("strong");
+  strong.appendChild(createText(title));
+  return strong;
+};
 
 myForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  let _res = localStorage.getItem("infoStorage");
+
+  let infoStorage;
+
+  _res == undefined ? (infoStorage = []) : (infoStorage = JSON.parse(_res));
 
   let data = [
     {
@@ -38,18 +51,150 @@ myForm.addEventListener("submit", (e) => {
     },
   ];
 
-  let datos = [];
+  let dataTest = [];
 
   data.forEach((e) => {
     dataConfirmed(e.param, e.paramAlert)
-      ? datos.push(e.param.value)
-      : datos.push("");
+      ? dataTest.push(e.param.value)
+      : dataTest.push("");
   });
+  if (dataTest.some((e) => e == "")) {
+    console.log("Faltan datos");
+  } else {
+    let infoComplete = {
+      name: dataTest[0],
+      lastname: dataTest[1],
+      email: dataTest[2],
+      password: dataTest[3],
+    };
+    infoStorage.push(infoComplete);
+    let answerJSON = JSON.stringify(infoStorage);
+    localStorage.setItem("infoStorage", answerJSON);
+  }
 
-  datos.some((e) => e == "") ? console.log("Faltan datos") : clearForm();
+  infoStorage.forEach((e) => {
+    let div = document.createElement("div");
+    div.setAttribute("class", "user");
+
+    let name = createText(e.name);
+    let lastname = createText(e.lastname);
+    let email = createText(e.email);
+
+    div.appendChild(createTitle("Nombre: "));
+    div.appendChild(name);
+
+    div.appendChild(createTitle("Apellido: "));
+    div.appendChild(lastname);
+
+    div.appendChild(createTitle("Email: "));
+    div.appendChild(email);
+
+    let showInfo = document.querySelector(".infoStored");
+    showInfo.appendChild(div);
+  });
 });
 
 /*
+
+
+
+
+
+
+
+
+const myForm = document.querySelector(".data-form");
+
+let dataConfirmed = (data, alert) => {
+  if (data.value) {
+    alert.classList.add("hiden");
+    data.classList.remove("badInput");
+    return true;
+  } else {
+    alert.classList.remove("hiden");
+    data.classList.add("badInput");
+    return false;
+  }
+};
+const createText = (_text) => {
+  let _p = document.createElement("p");
+  let _textNode = document.createTextNode(_text);
+  _p.appendChild(_textNode);
+  return _p;
+};
+const createTitle = (_text) => {
+  let _p = document.createElement("p");
+  let _textNode = document.createTextNode(<strong>_text</strong>);
+  _p.appendChild(_textNode);
+  return _p;
+};
+
+myForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let _res = localStorage.getItem("infoStorage");
+
+  let infoStorage;
+
+  _res == undefined ? (infoStorage = []) : (infoStorage = JSON.parse(_res));
+
+  let data = [
+    {
+      param: e.target.name,
+      paramAlert: document.getElementById("nameAlert"),
+    },
+    {
+      param: e.target.lastname,
+      paramAlert: document.getElementById("lastnameAlert"),
+    },
+    {
+      param: e.target.email,
+      paramAlert: document.getElementById("emailAlert"),
+    },
+    {
+      param: e.target.password,
+      paramAlert: document.getElementById("passwordAlert"),
+    },
+  ];
+
+  let dataTest = [];
+
+  data.forEach((e) => {
+    dataConfirmed(e.param, e.paramAlert)
+      ? dataTest.push(e.param.value)
+      : dataTest.push("");
+  });
+  if (dataTest.some((e) => e == "")) {
+    console.log("Faltan datos");
+  } else {
+    let infoComplete = {
+      name: dataTest[0],
+      lastname: dataTest[1],
+      email: dataTest[2],
+      password: dataTest[3],
+    };
+    infoStorage.push(infoComplete);
+    let answerJSON = JSON.stringify(infoStorage);
+    localStorage.setItem("infoStorage", answerJSON);
+  }
+
+  infoStorage.forEach((e) => {
+    let div = document.createElement("div");
+    div.setAttribute("class", "user");
+
+    let name = createText(e.name);
+    let lastname = createText(e.lastname);
+    let email = createText(e.email);
+
+    //div.appendChild(createTitle(Nombre));
+    div.appendChild(name);
+    div.appendChild(lastname);
+    div.appendChild(email);
+
+    let showInfo = document.querySelector(".infoStored");
+    showInfo.appendChild(div);
+  });
+});
 
 //console.log(data);
   //console.log(dataConfirmed(data.name, alert.name));
